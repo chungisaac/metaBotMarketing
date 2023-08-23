@@ -1,0 +1,24 @@
+name: Generate prompt and post on facebook page
+
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  create-fb-post-cron:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.10'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - uses: browser-actions/setup-chrome@v1
+      - run: python tweet.py
+        env:
+          CLARIFAI_PAT_PROD: ${{ secrets.CLARIFAI_PAT_PROD }}
+          PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+        
