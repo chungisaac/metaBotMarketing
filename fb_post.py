@@ -7,9 +7,7 @@ from llm import ClarifaiPrompter
 page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 
 def clean_llm_output(raw_text: str) -> str:
-    cleaned = raw_text.replace('\n\n', ' ')
-    cleaned = cleaned.replace("\"", "")
-    cleaned = cleaned.replace("Example: ", "")
+    cleaned = raw_text.lstrip('\n\n')
     cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
     cleaned = cleaned.replace(" Clarifai "," @clarifai ")
     cleaned = cleaned.replace("#Clarifai's","@clarifai's")
