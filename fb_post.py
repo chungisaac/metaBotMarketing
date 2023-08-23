@@ -7,7 +7,7 @@ from llm import ClarifaiPrompter
 page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 
 def clean_llm_output(raw_text: str) -> str:
-    cleaned = raw_text.split('\n\n')[1]
+    cleaned = raw_text.replace('\n\n', ' ')
     cleaned = cleaned.replace("\"", "")
     cleaned = cleaned.replace("Example: ", "")
     cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
@@ -27,7 +27,7 @@ def main():
     while True:
         output = prompter.predict()
         post_msg = clean_llm_output(output)
-        if len(post_msg) < 280 and "https" in post_msg:
+        if "https" in post_msg:
             break
 
     post_url = 'https://graph.facebook.com/{}/feed'.format(FB_PAGE_ID)
