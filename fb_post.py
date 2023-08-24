@@ -10,7 +10,7 @@ page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 def clean_llm_output(raw_text: str) -> str:
     try:
         cleaned = raw_text.split('\"')
-        if len(cleaned) == 0:
+        if len(cleaned) <= 1:
             cleaned = raw_text.lstrip("\n\n")
         else:
             cleaned = cleaned[1]
