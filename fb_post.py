@@ -3,15 +3,18 @@ import requests
 
 from constants import FB_PAGE_ID
 from llm import ClarifaiPrompter
+from upload import ClarifaiUploader
 
 page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 
 def clean_llm_output(raw_text: str) -> str:
     cleaned = raw_text.lstrip('\n\n')
+    cleaned = cleaned.replace("Example Facebook Post:\n\n","")
     cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
     cleaned = cleaned.replace(" Clarifai "," @clarifai ")
     cleaned = cleaned.replace("#Clarifai's","@clarifai's")
     cleaned = cleaned.replace("#Clarifai", "@clarifai")
+    cleaned = cleaned.replace(">","").replace("<","")
     return cleaned
 
 
@@ -39,6 +42,7 @@ def main():
     
     post_url = build_fb_post_url(post_id)    
     print(post_url)
+    ClarifaiUploader().upload(post_url)
 
 
 if __name__ == "__main__":
