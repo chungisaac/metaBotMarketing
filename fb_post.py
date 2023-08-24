@@ -8,7 +8,9 @@ from upload import ClarifaiUploader
 page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 
 def clean_llm_output(raw_text: str) -> str:
-    cleaned = raw_text.lstrip('\n\n')
+    cleaned = raw_text.split('\"')[1]
+    if len(cleaned) == 0:
+        cleaned = raw_text.lstrip("\n\n")
     cleaned = cleaned.replace("Example Facebook Post:\n\n","")
     cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
     cleaned = cleaned.replace(" Clarifai "," @clarifai ")
