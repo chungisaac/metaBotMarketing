@@ -3,6 +3,7 @@ import requests
 
 from constants import FB_PAGE_ID
 from llm import ClarifaiPrompter
+from upload import ClarifaiUploader
 
 page_access_token = os.environ.get("PAGE_ACCESS_TOKEN")
 
@@ -41,6 +42,7 @@ def main():
     
     post_url = build_fb_post_url(post_id)    
     print(post_url)
+    ClarifaiUploader().upload(post_url)
 
 
 if __name__ == "__main__":

@@ -33,6 +33,6 @@ PROMPTS = [
 
 FB_PAGE_ID='122309344291300'
 
-## For uploading the screenshot to clarifai
+## For uploading the link to clarifai
 UPLOAD_USER_ID = 'Isaac'
-UPLOAD_APP_ID = 'tweet-screenshots'
+UPLOAD_APP_ID = 'fb-post-links'

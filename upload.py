@@ -14,18 +14,15 @@ class ClarifaiUploader:
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
 
-    def upload(self, image_file_location: str):
-        with open(image_file_location, "rb") as f:
-            file_bytes = f.read()
-
+    def upload(self, raw_text: str):
         post_inputs_response = self.stub.PostInputs(
             service_pb2.PostInputsRequest(
                 user_app_id=self.userDataObject,
                 inputs=[
                     resources_pb2.Input(
                         data=resources_pb2.Data(
-                            image=resources_pb2.Image(
-                                base64=file_bytes
+                            text=resources_pb2.Text(
+                                raw=raw_text
                             )
                         )
                     )
