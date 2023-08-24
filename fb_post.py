@@ -13,6 +13,7 @@ def clean_llm_output(raw_text: str) -> str:
     cleaned = cleaned.replace(" Clarifai "," @clarifai ")
     cleaned = cleaned.replace("#Clarifai's","@clarifai's")
     cleaned = cleaned.replace("#Clarifai", "@clarifai")
+    cleaned = cleaned.replace(">","").replace("<","")
     return cleaned
 
 
