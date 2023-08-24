@@ -8,7 +8,6 @@ MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
 
 PROMPT_TEMPLATE = Template("Prepare an example facebook post to promote Clarifai's $highlight. Only output the raw text of the example. Do not include instructions. Include the hashtags '$hashtags'. Include the relevant link $optional `$link`. Limit the entire example to 2000 characters including the link.")
 PROMOTION_HASHTAG_LINK_TUPLES = [
-    ("hackathon with @lablab.ai", "#llms", "to register", "https://lablab.ai/event/llama-2-hackathon-with-clarifai"),
     ("LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
     ("LLM finetuning capabilities", "#llms", "to a video tutorial", "https://www.youtube.com/watch?v=Ycl7xVA2wHk"),
     ("vector search capabilities", "#llms", "", "https://www.clarifai.com/use-cases/visual-search"),
