@@ -14,6 +14,7 @@ def clean_llm_output(raw_text: str) -> str:
             cleaned = raw_text.lstrip("\n\n")
         else:
             cleaned = cleaned[1]
+        cleaned = cleaned.replace("Sure! Here's a possible Facebook post:\n\n","")
         cleaned = cleaned.replace("Example Facebook Post:\n\n","")
         cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
         cleaned = cleaned.replace(" Clarifai "," @clarifai ")
