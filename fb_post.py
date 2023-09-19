@@ -21,6 +21,9 @@ def clean_llm_output(raw_text: str) -> str:
         cleaned = cleaned.replace("#Clarifai's","@clarifai's")
         cleaned = cleaned.replace("#Clarifai", "@clarifai")
         cleaned = cleaned.replace(">","").replace("<","")
+        cleaned = cleaned.replace("Here's a sample post:\n\n","").replace("<","")
+        cleaned = cleaned.replace("Here's a possible post:\n\n","").replace("<","")
+
     except:
         raise Exception("Raw output: %s, cleaned:%s" % (raw_text, str(cleaned)))
     return cleaned
