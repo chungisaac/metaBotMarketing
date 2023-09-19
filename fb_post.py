@@ -14,15 +14,19 @@ def clean_llm_output(raw_text: str) -> str:
             cleaned = raw_text.lstrip("\n\n")
         else:
             cleaned = cleaned[1]
-        cleaned = cleaned.replace("Sure! Here's a possible Facebook post:\n\n","")
+
+        sub_list = cleaned.split("\n\n")
+        if "Sure!" in sub_list[0] or "Here's a" in sub_list[0]:
+            cleaned = "\n\n".join(sub_list[1:])
+        else:
+            cleaned = "\n\n".join(sub_list)
+        
         cleaned = cleaned.replace("Example Facebook Post:\n\n","")
         cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
         cleaned = cleaned.replace(" Clarifai "," @clarifai ")
         cleaned = cleaned.replace("#Clarifai's","@clarifai's")
         cleaned = cleaned.replace("#Clarifai", "@clarifai")
         cleaned = cleaned.replace(">","").replace("<","")
-        cleaned = cleaned.replace("Here's a sample post:\n\n","").replace("<","")
-        cleaned = cleaned.replace("Here's a possible post:\n\n","").replace("<","")
 
     except:
         raise Exception("Raw output: %s, cleaned:%s" % (raw_text, str(cleaned)))
