@@ -8,7 +8,8 @@ MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
 
 PROMPT_TEMPLATE = Template("Prepare a facebook post to promote $highlight. Only output the raw text of the post without any instructions or any preamble. Include the hashtags '$hashtags'. Include the relevant link $optional `$link`. Limit the post to 2000 characters including the link.")
 PROMOTION_HASHTAG_LINK_TUPLES = [
-    ("Clarifai's LLM Hackathon with Streamlit", "#llms #hackathon", "", "https://streamlit.io/community/llm-hackathon-2023?utm_campaign=2023-Q3%20LLM%20Hackathon&utm_source=clarifai&utm_medium=partner"),
+    ("Clarifai's 9.8 release", "#GenerativeAI #Developers", "", "https://www.clarifai.com/blog/clarifai-release-9.8"),
+    ("Clarifai's new Python SDK", "#GenerativeAI #Developers", "", "https://www.clarifai.com/blog/developer-preview-clarifai-python-sdk"),
     ("Clarifai's LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
     ("100 Clarifai hackathon projects", "#ai", "to a blogpost", "https://www.clarifai.com/blog/100-clarifai-hackathon-projects-from-2018"),
     ("generative AI", "#genai", "to a blogpost", "https://www.clarifai.com/blog/generative-ai-and-large-language-models"),
